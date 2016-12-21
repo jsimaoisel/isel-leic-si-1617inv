@@ -32,7 +32,7 @@ public class OpenIDConnectCallback extends HttpServlet {
         BufferedReader input = new BufferedReader(
                 new InputStreamReader(connection.getInputStream()));
         String line;
-
+        output = new PrintWriter(resp.getOutputStream());
         while ((line = input.readLine()) != null) {
             System.out.println(line);
             output.write(line);
@@ -41,8 +41,6 @@ public class OpenIDConnectCallback extends HttpServlet {
         input.close();
 
         resp.setStatus(200);
-
-        /* exchange 'code' by 'id_token' and 'access_token' */
 
     }
 }
